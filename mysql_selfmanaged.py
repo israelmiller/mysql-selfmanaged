@@ -16,11 +16,11 @@ MYSQL_DATABASE = os.getenv('MYSQL_DATABASE')
 engine = create_engine(f'mysql+pymysql://{MYSQL_USERNAME}:{MYSQL_PASSWORD}@{MYSQL_HOSTNAME}/{MYSQL_DATABASE}')
 
 #define a query
-query = """SELECT * FROM temp.table1;"""
+query = """SELECT * FROM test_EMR.patients;"""
 
 #read the query into a dataframe
 df = pd.read_sql(query, con=engine)
-
+df
 #prepare a table to upload a dataframe to a mysql table
 test_df = pd.read_csv('patients.csv')
 test_df_small = test_df.head(10)
